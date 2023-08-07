@@ -31,41 +31,43 @@ function addNewComment() {
 
  // Je vérifie si j'ai bien ma liste de commentaires
  console.log(myComment);
+ // si tous les valeurs de chaque champs est supérieur à ""
  if (firstName.value.trim() > "" && lastName.value.trim() >  "" && message.value.trim() > ""){
  // Créer l'élément 
  let premiereDiv = document.createElement("div");
  let deuxiemeDiv = document.createElement("div");
  let myTitre = document.createElement("h3");
  let troisiemeDiv = document.createElement("div");
- 
+ //let myPara =document.createElement("p");
  
  // Ajoute les classes
- premiereDiv.classList.add("flex","space-x-4","text-sm","text-gray-500"
- );
+ premiereDiv.classList.add("flex","space-x-4","text-sm","text-gray-500", "border-gray-200");
  console.log(premiereDiv);
  deuxiemeDiv.classList.add("flex-1", "py-10", "border-t", "border-gray-200");
  console.log(deuxiemeDiv);
- myTitre.classList.add("font-medium","text-gray-900");
+  myTitre.classList.add("font-medium","text-gray-900");
  console.log(myTitre);
  troisiemeDiv.classList.add("prose", "prose-sm", "mt-4", "max-w-none", "text-gray-500");
  console.log(troisiemeDiv);
 
- // Tu mets du contenu
+ //  contenu
   premiereDiv.textContent = "";
   deuxiemeDiv.textContent = "" ;
   myTitre.textContent = firstName.value +" "+lastName.value+ "" ;
-  troisiemeDiv.textContent = message.value+"";
- // La lier avec un autre élément
+  troisiemeDiv.textContent = message.value;
+   
+ //  lier avec un autre élément
  myComment.append(premiereDiv);
- myComment.append(deuxiemeDiv);
- myComment.append(myTitre);
- myComment.append(troisiemeDiv)};
- 
+  premiereDiv.append(deuxiemeDiv);
+ deuxiemeDiv.append(myTitre);
+  myTitre.append(troisiemeDiv);}
+
  
 
 }
 
 // 3. Supprimer le contenu des champs du formulaire une fois le nouveau commentaire affiché dans la liste.
+// si toutes les valeurs de chaque champs sont supérieur à "".
 function clearForm() {
   if (firstName.value.trim() > "" && lastName.value.trim() >  "" && message.value.trim() > ""){
   firstName.value = "";
@@ -78,13 +80,13 @@ function clearForm() {
 myForm.addEventListener("submit", e => {
   e.preventDefault();
   
-  // 1. Tu fais la fonctionnalité "voir si c'est vide"
+  //  fonctionnalité "voir si c'est vide"
   checkIfEmpty();
 
-  // 2. Ajouter le contenu dans nouveau commentaire
+  //  Ajouter le contenu dans nouveau commentaire
   addNewComment();
 
-  // 3. Supprimer le contenu des champs une fois soumis
+  //  Supprimer le contenu des champs une fois soumis
   clearForm();
     
 })
